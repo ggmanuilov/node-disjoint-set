@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+service DsuService {
+    rpc TransferBegin (TransferBeginRequest) returns (EmptyResponse) {}
+    rpc Unite (UniteRequest) returns (EmptyResponse) {}
+    rpc TransferEnd (TransferEndRequest) returns (EmptyResponse) {}
+}
+
+message TransferBeginRequest {
+    int32 app_id = 1;
+}
+message TransferEndRequest {
+    int32 app_id = 1;
+}
+
+message EmptyResponse {}
+
+// Request set for unite two a set
+message UniteRequest {
+    int32 client_id = 10;
+    // element set
+    int32 x = 1;
+    // element set
+    int32 y = 2;
+}
