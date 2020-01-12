@@ -29,7 +29,13 @@
 
 src - Application work directory
 
-### Start server
+### Build
+```shell script
+#build and run server
+docker-compose up
+```
+
+### Start server without docker
 ```shell script
 npm run start-server
 ```
