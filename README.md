@@ -27,6 +27,8 @@
 
 ## Implementation
 
+src - Application work directory
+
 ### Start server
 ```shell script
 npm run start-server

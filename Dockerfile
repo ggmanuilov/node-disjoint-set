@@ -30,4 +30,4 @@ COPY src/package-lock.json /usr/src
 RUN npm install
 
 ## Start
-CMD [ "npm", "run", "start-server" ]
+CMD [ "npm", "run", "server" ]
