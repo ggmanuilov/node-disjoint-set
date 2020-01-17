@@ -8,12 +8,7 @@ ARG GID=1000
 ENV UID=${UID}
 ENV GID=${GID}
 
-RUN usermod -u ${UID} node
-RUN groupmod -g ${GID} node
-RUN chown -R ${UID}:${GID} /home/node
-
-RUN mkdir -p /usr/src
-RUN chown -R ${UID}:${GID} /usr/src
+RUN usermod -u ${UID} node && groupmod -g ${GID} node && chown -R ${UID}:${GID} /home/node && mkdir -p /usr/src && chown -R ${UID}:${GID} /usr/src
 
 WORKDIR /usr/src
 
@@ -21,13 +16,12 @@ USER node
 
 # install protoc in system
 COPY docker/server/last_protoc.sh /usr/src
-RUN /bin/bash /usr/src/last_protoc.sh
 
 COPY src/package.json /usr/src
 COPY src/package-lock.json /usr/src
 
 
-RUN npm install
+RUN /bin/bash /usr/src/last_protoc.sh && npm install
 
 ## Start
 CMD [ "npm", "run", "server" ]

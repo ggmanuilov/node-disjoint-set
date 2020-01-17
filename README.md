@@ -29,14 +29,18 @@
 
 src - Application work directory
 
+It's build for development mode. Not use it in production.
+
 ### Build
 ```shell script
 #build and run server
-docker-compose up
+sh ./docker-build.sh && docker-compose up
 ```
 
 ### Start server without docker
 ```shell script
+cd ./src
+npm i
 npm run start-server
 ```
 
