@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e
+
 # Our custom function
 cust_func() {
   PATH="./data/client_$1.txt"

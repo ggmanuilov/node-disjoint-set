@@ -30,7 +30,7 @@ const getLine = (() => {
 
 const appId = Math.floor(Math.random() * Math.floor(100));
 
-const host = "127.0.0.1:50051";
+const host = "dsu-grps-server:50051";
 let dsuService = new Client(host);
 
 // @ts-ignore

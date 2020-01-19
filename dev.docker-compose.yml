@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  app:
+    container_name: dsu-grps
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/usr/src
+    environment:
+      ENV_NAME: dev
+    ports:
+      - 50051:50051

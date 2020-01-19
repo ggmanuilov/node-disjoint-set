@@ -1,16 +1,25 @@
 version: "3"
 
 services:
-  app:
-    container_name: dsu-grps
+  server:
+    container_name: dsu-grps-server
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: prod.Dockerfile
+    image: dsu-grps-server
     stdin_open: true
-#    tty: true
-    volumes:
-      - ./:/usr/src
-    environment:
-      ENV_NAME: dev
     ports:
       - 50051:50051
+  client:
+    container_name: dsu-grps-client
+    build:
+      context: .
+      dockerfile: prod.Dockerfile
+    # override start server. here all clients run send data to server
+    command: ['bash', '/usr/src/bash/run-client-parallel.sh']
+    image: dsu-grps-client
+    stdin_open: true
+    links:
+      - server
+    depends_on:
+      - server
